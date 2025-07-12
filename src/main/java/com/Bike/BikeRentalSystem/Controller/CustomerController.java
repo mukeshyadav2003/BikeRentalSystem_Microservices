@@ -3,12 +3,14 @@ package com.Bike.BikeRentalSystem.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.Bike.BikeRentalSystem.Service.Admin_and_CustomerDetails;
-
+ 
 @RestController
 @CrossOrigin(origins = "http://127.0.0.1:5500/")
+@RequestMapping("/bike")
 public class CustomerController {
 
 	@Autowired
@@ -20,15 +22,13 @@ public class CustomerController {
 	public String addAdminDetails(@RequestParam("name")String name,
                                   @RequestParam("password") String password,
                                   @RequestParam("RcBookNo") int bikeno,
-                                  @RequestParam("mobileNo") Long mobileNo){
-                                	   
+                                  @RequestParam("mobileNo") Long mobileNo){         	   
                                 	   
 		admin_and_CustomerDetails.addAdminDetails(name,password,bikeno,mobileNo);
                                 	   
                                 	   return "Succefully add "+name + "Details";
                                    }
 	
-
 	//-------------------------Customer Details--------------------------------------------- *
 	
 	@PostMapping("/Customerdetails")
@@ -50,7 +50,7 @@ public class CustomerController {
                               @RequestParam("Report") String Report,
                               @RequestParam("vechileid") Long vechileid) {
 		 
-		 admin_and_CustomerDetails.SendReport(name,Report,vechileid);
+	    admin_and_CustomerDetails.SendReport(name,Report,vechileid);
 		 
 		return "Addedd...";
 		 
